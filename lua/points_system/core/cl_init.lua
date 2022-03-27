@@ -11,7 +11,7 @@ end
 openPlayerMenu = function(target)
     validCheck()
 
-    local w, h, tall = ScreenScale(150), ScreenScale(180), ScreenScale(24)
+    local w, h = ScreenScale(150), ScreenScale(180)
 
     plyMenu = vgui.Create("IVGPoints.Frame")
     plyMenu:SetSize(w, h)

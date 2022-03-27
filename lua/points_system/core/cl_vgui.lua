@@ -34,7 +34,6 @@ function PANEL:Init()
     function self.VBar.btnGrip:Paint(w, h)
         local parent = self:GetParent():GetParent()
         local x, y = parent:ScreenToLocal(gui.MousePos())
-        local x2, y2 = parent:GetPos()
         local w2, h2 = parent:GetSize()
 
         if (x >= 0 and x <= w2 and y >= 0 and y <= h2) then
