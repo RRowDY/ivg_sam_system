@@ -1,5 +1,3 @@
-resource.AddFile("materials/ivgpoints/adminicon.png")
-resource.AddFile("materials/ivgpoints/backbutton.png")
 local IVG = ivgPoints
 local directory = IVG.dataFolder
 
