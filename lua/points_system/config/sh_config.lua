@@ -4,9 +4,6 @@ ivgPoints.dataFolder = "ivgpoints"
 -- prefix used for the chat command
 ivgPoints.chatCommandPrefix = "!"
 
--- name of the in-game command to open the admin menu
-ivgPoints.adminChatCommand = "ivgadmin"
-
 -- admin ranks that will be able to access the menu
 ivgPoints.adminCommandAccess = {
     ["superadmin"] = true,

@@ -23,6 +23,7 @@ util.AddNetworkString("ivgPoints.browse")
 util.AddNetworkString("ivgPoints.send")
 util.AddNetworkString("ivgPoints.sendStuds")
 util.AddNetworkString("ivgPoints.sendMerits")
+util.AddNetworkString("ivgPoints.stats")
 
 function ivgPoints.saveData(ply)
     file.Write(directory .. "/" .. ply:SteamID64() .. ".txt", util.TableToJSON(ply.samData))
@@ -154,6 +155,18 @@ IVG.Commands = {
         end,
         noargs = true,
     },
+    viewpoints = {
+        noAdmin = true,
+        callBack = function(ply, args)
+            net.Start("ivgPoints.stats")
+                net.WriteEntity(ply)
+                net.WriteTable(ply.samData)
+            net.Send(ply)
+
+            return ""
+        end,
+        noargs = true,
+    },
 }
 
 hook.Add("PlayerSay", "HandleSamCommands", function(ply, text, team)
@@ -164,7 +177,7 @@ hook.Add("PlayerSay", "HandleSamCommands", function(ply, text, team)
     local commandData = IVG.Commands[command]
     if (not commandData) then return end
 
-    if (not IVG.adminCommandAccess[ply:GetUserGroup()] and not IVG.steamIDAdminAccess[ply:SteamID()]) then
+    if (not IVG.adminCommandAccess[ply:GetUserGroup()] and not IVG.steamIDAdminAccess[ply:SteamID()] and not commandData.noAdmin) then
         IVG.playerNotify(ply, "No access!")
 
         return ""

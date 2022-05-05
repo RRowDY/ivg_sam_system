@@ -187,3 +187,10 @@ end
 net.Receive("ivgPoints.admin", function()
     openAdminMenu()
 end)
+
+net.Receive("ivgPoints.stats", function()
+    local targetPlayer = net.ReadEntity()
+    local targetData = net.ReadTable()
+    targetPlayer.samData = targetData
+    chat.AddText(Color(100,218,100), "You are holding: ", Color(177,61,61), targetPlayer.samData.studs .. " studs ", Color(100,218,100), "and ", Color(177,61,61), targetPlayer.samData.merits .. " merits")
+end)
